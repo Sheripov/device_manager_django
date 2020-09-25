@@ -1,0 +1,44 @@
+{% extends 'management/base.html' %}
+{% block title %}User devices{% endblock %}
+{% block body %}
+    <div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            {% for device in user_devices %}
+                <div style="margin: auto" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="card mb-4 shadow-sm">
+                        <h3 class="card-header">{{ device.device.device_type }}</h3>
+                        <div class="card-body">
+                            <img style="height: 90%; width: 100%; display: block;" src="{{ MEDIA_URL }}{{ device.device.device_photo.url }}" alt="Card image">
+                            <hr>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Device name: <br> {{ device.device.device_name }}</li>
+                                <li class="list-group-item">Item number: {{ device.device.item_number }}</li>
+                                <li class="list-group-item">Paid by: {{ device.device.paid_by }}</li>
+                                <li class="list-group-item">Price: {{ device.device.price }}</li>
+                                <li class="list-group-item">Team: {{ device.device.team }}</li>
+                            </ul>
+                            <hr>
+                            <div class="card-body">
+                                <li class="list-group-item"> <a href="{{ device.device.configuration }}" class="card-link">Configuration link</a></li>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            {% if perms.PersonnelManagement.change_projectemail %}
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'device-update' device.id %}">Edit</a>
+                            {% endif %}
+                            {% if perms.PersonnelManagement.delete_invoicetype %}
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'device-delete' device.id %}">Delete</a>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer text-muted">
+                            {{ device.device.purchase_date }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

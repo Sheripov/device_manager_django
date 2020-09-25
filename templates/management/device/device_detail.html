@@ -1,0 +1,30 @@
+{% extends 'management/base.html' %}
+{% block title %}{{ device_detail.device_type }}{% endblock %}
+{% block body %}
+    <div class="container">
+    <div style="margin: auto;" class="col-5">
+        <div class="card mb-4 shadow-sm">
+            <h3 class="card-header">{{ device_detail.device_type }}</h3>
+            <div class="card-body">
+                <img style="display: block; margin: auto; width: 50%;" src="{{ MEDIA_URL }}{{ device_detail.device_photo.url }}" alt="Card image">
+                <hr>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Device name: <br> {{ device_detail.device_name }}</li>
+                    <li class="list-group-item">Item number: {{ device_detail.item_number }}</li>
+                    <li class="list-group-item">Paid by: {{ device_detail.paid_by }}</li>
+                    <li class="list-group-item">Price: {{ device_detail.price }}</li>
+                    <li class="list-group-item">Team: {{ device_detail.team }}</li>
+                    <li class="list-group-item">In use: {% for user in device_detail.is_busy %} {{ user }} {% endfor %}</li>
+                </ul>
+                <hr>
+                <div class="card-body">
+                    <li class="list-group-item"> <a href="{{ device_detail.configuration }}" class="card-link">Configuration link</a></li>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                {{ device_detail.purchase_date }}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

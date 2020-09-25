@@ -1,0 +1,18 @@
+{% extends 'management/base.html' %}
+
+{% block body %}
+<form method="post">
+    {% csrf_token %}
+    <div class="container">
+    <div class="bg-light my-4 p-4 text-center">
+        {% if Protected_Error %}
+        <p>Protected Error</p>
+        {% else %}
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <input type="submit" value="Confirm"/>
+        {% endif %}
+    </div>
+    </div>>
+</form>
+
+{% endblock %}

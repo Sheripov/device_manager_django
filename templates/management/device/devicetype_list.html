@@ -1,0 +1,39 @@
+{% extends 'management/base.html' %}
+{% block body %}
+{% if devicetype_list %}
+    <div class="container">
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Team name</th>
+                    <th scope="col">Operations</th>
+                </tr>
+            </thead>
+             <tbody>
+            {% for devicetype in devicetype_list %}
+                <tr class="table-primary">
+                    <th scope="row">{{ devicetype.device_type }}</th>
+                    <td><div class="btn-group">
+                            {% if perms.PersonnelManagement.change_projectemail %}
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'devicetype-update' devicetype.id %}">Edit</a>
+                            {% endif %}
+                            {% if perms.PersonnelManagement.delete_invoicetype %}
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'devicetype-delete' devicetype.id %}">Delete</a>
+                            {% endif %}
+                        </div></td>
+                </tr>
+            {% endfor %}
+             </tbody>
+        </table>
+        </div>
+    </div>
+{% else %}
+    <div class="container">
+    <div class="bg-light my-4 p-4 text-center">
+    <p>List is empty. Push the button to create a device type.</p>
+    <a class="btn btn-success" style="color: black" href="{% url 'devicetype-create' %}">Сreate device type</a>
+    </div>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'management/base.html' %}
+{% block body %}
+    {% if device_list %}
+    <div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            {% for device in device_list %}
+                <div style="margin:auto;" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="card mb-4 shadow-sm">
+                        <h3 class="card-header">{{ device.device_type }}</h3>
+                        <div class="card-body">
+                            <img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="{{ MEDIA_URL }}{{ device.device_photo.url }}" alt="Card image">
+                            <hr>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Device name: <br> {{ device.device_name }}</li>
+                                <li class="list-group-item">Item number: {{ device.item_number }}</li>
+                                <li class="list-group-item">Paid by: {{ device.paid_by }}</li>
+                                <li class="list-group-item">Price: {{ device.price }}</li>
+                                <li class="list-group-item">Team: {{ device.team }}</li>
+                                <li class="list-group-item">
+                                {% if device.is_busy %}
+                                    In use: {% for user in device.is_busy %} {{ user }} {% endfor %}
+                                {% else %}
+                                <p style="color: forestgreen; font-size: large">Free to use</p>
+                                {% endif %}</li>
+                            </ul>
+                            <hr>
+                            <div class="card-body">
+                                <li class="list-group-item"> <a href="{{ device.configuration }}" class="card-link">Configuration link</a></li>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            {% if perms.PersonnelManagement.change_projectemail %}
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'device-update' device.item_number %}">Edit</a>
+                            {% endif %}
+                            {% if perms.PersonnelManagement.delete_invoicetype %}
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'device-delete' device.item_number %}">Delete</a>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer text-muted">
+                            {{ device.purchase_date }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    {% else %}
+        <div class="container">
+        <div class="bg-light my-4 p-4 text-center">
+        <p>List is empty. Push the button to create a device.</p>
+        <a class="btn btn-success" style="color: black" href="{% url 'device-create' %}">Сreate device</a>
+        </div>
+        </div>
+    {% endif %}
+{% endblock %}
