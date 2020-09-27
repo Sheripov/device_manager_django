@@ -54,8 +54,12 @@
 {% else %}
     <div class="container">
     <div class="bg-light my-4 p-4 text-center">
-    <p>List is empty. Push the button to create distribution.</p>
-    <a class="btn btn-success" style="color: black" href="{% url 'assignment-create' %}">Сreate distribution</a>
+        {% if request.user.is_authenticated %}
+        <p>List is empty. Push the button to create distribution.</p>
+        <a class="btn btn-success" style="color: black" href="{% url 'assignment-create' %}">Сreate distribution</a>
+        {% else %}
+        <p>List is empty.</p>
+        {% endif %}
     </div>
     </div>
 {% endif %}

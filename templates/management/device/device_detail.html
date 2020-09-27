@@ -1,6 +1,7 @@
 {% extends 'management/base.html' %}
 {% block title %}{{ device_detail.device_type }}{% endblock %}
 {% block body %}
+{% if device_detail %}
     <div class="container">
     <div style="margin: auto;" class="col-5">
         <div class="card mb-4 shadow-sm">
@@ -27,4 +28,5 @@
         </div>
     </div>
     </div>
+{% endif %}
 {% endblock %}
