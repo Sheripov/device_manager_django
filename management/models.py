@@ -71,7 +71,7 @@ class Device(models.Model):
         return self.device_name
 
     def get_absolute_url(self):
-        return reverse('device-detail', args=[self.item_number])
+        return reverse('device_detail', args=[self.item_number])
 
     def is_busy(self):
         check = Assignment.objects.filter(device_id=self.item_number)
