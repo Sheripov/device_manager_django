@@ -11,16 +11,11 @@ class User(models.Model):
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
-    @staticmethod
-    def get_absolute_url():
-        return reverse('user_list')
+    def get_absolute_url(self):
+        return reverse('user_detail', args=[self.id])
 
     def get_user_devices_list(self):
         return reverse('user_devices_list', args=[self.id])
-
-    def get_absolute_user_url(self):
-        return reverse('user-detail', args=[self.id])
-
 
 
 class Buyer(models.Model):
@@ -53,7 +48,7 @@ class DeviceType(models.Model):
 
     @staticmethod
     def get_absolute_url():
-        return reverse('device_list')
+        return reverse('devicetype_list')
 
 
 class Device(models.Model):

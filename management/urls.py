@@ -17,8 +17,8 @@ urlpatterns = [
     url(r'buyer-list$', BuyerListView.as_view(), name='buyer_list'),
     url(r'devicetype-list$', DeviceTypeListView.as_view(), name='devicetype_list'),
 
-    url(r'user-detail/(?P<pk>[0-9]+)/$', UserDetailView.as_view(), name='user-detail'),
-    url(r'device-detail/(?P<pk>[0-9]+)/$', DeviceDetailView.as_view(), name='device-detail'),
+    url(r'user-detail/(?P<pk>[0-9]+)/$', UserDetailView.as_view(), name='user_detail'),
+    url(r'device-detail/(?P<pk>[0-9]+)/$', DeviceDetailView.as_view(), name='device_detail'),
 
     url(r'user-create$', UserCreateView.as_view(), name='user-create'),
     url(r'device-create$', DeviceCreateView.as_view(), name='device-create'),

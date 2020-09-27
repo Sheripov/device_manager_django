@@ -26,7 +26,7 @@
         <tbody>
             <tr class="table-info">
                 <th scope="row">{{ forloop.counter }}</th>
-                <td><a href="{{ el.user.get_absolute_user_url }}">{{ el.user.first_name }} {{ el.user.last_name }}</a></td>
+                <td><a href="{{ el.user.get_absolute_url }}">{{ el.user.first_name }} {{ el.user.last_name }}</a></td>
                 <td><a href="{{ el.device.get_absolute_url }}">{{ el.device }}</a></td>
                 <td><a href="{{ el.device.configuration }}">CONFIGURATION LINK</a></td>
                 <td>{{ el.device.price }}$</td>
