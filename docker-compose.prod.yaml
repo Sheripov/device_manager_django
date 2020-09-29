@@ -1,5 +1,4 @@
-version: '3'
-
+version: '3.8'
 
 services:
     web:
@@ -10,8 +9,10 @@ services:
           requirements: requirements/base.txt
 
       command: >
-        bash -c "python3 manage.py migrate
-        && python3 manage.py runserver 0.0.0.0:8000"
+        bash -c "python3 manage.py makemigrations &&
+        python3 manage.py migrate && 
+        python3 manage.py collectstatic && 
+        python3 manage.py runserver 0.0.0.0:8000"
       ports:
        - '8000:8000'
       depends_on:

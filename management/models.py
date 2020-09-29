@@ -13,14 +13,13 @@ class User(models.Model):
 
     @staticmethod
     def get_absolute_url():
-        return reverse('user_list')
+        return reverse('management:user_list')
 
     def get_user_devices_list(self):
-        return reverse('user_devices_list', args=[self.id])
+        return reverse('management:user_devices_list', args=[self.id])
 
     def get_absolute_user_url(self):
-        return reverse('user-detail', args=[self.id])
-
+        return reverse('management:user_detail', args=[self.id])
 
 
 class Buyer(models.Model):
@@ -31,7 +30,7 @@ class Buyer(models.Model):
 
     @staticmethod
     def get_absolute_url():
-        return reverse('buyer_list')
+        return reverse('management:buyer_list')
 
 
 class Team(models.Model):
@@ -42,7 +41,7 @@ class Team(models.Model):
 
     @staticmethod
     def get_absolute_url():
-        return reverse('team_list')
+        return reverse('management:team_list')
 
 
 class DeviceType(models.Model):
@@ -53,7 +52,7 @@ class DeviceType(models.Model):
 
     @staticmethod
     def get_absolute_url():
-        return reverse('device_list')
+        return reverse('management:device_list')
 
 
 class Device(models.Model):
@@ -71,7 +70,7 @@ class Device(models.Model):
         return self.device_name
 
     def get_absolute_url(self):
-        return reverse('device-detail', args=[self.item_number])
+        return reverse('management:device_detail', args=[self.item_number])
 
     def is_busy(self):
         check = Assignment.objects.filter(device_id=self.item_number)
@@ -82,11 +81,11 @@ class Assignment(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     device = models.OneToOneField(Device, on_delete=models.PROTECT)
     comment = models.TextField('Comment')
-    assignment_date = models.DateField('Assignment date', auto_now=True)
+    assignment_date = models.DateField('Assignment date', editable=True, auto_now_add=True)
 
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'
 
     @staticmethod
     def get_absolute_url():
-        return reverse('assignment_list')
+        return reverse('management:assignment_list')

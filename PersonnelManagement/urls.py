@@ -31,8 +31,10 @@ router.register(r'assignment', views.AssignmentViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('management.urls')),
+    path('', include('management.urls', namespace='management')),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

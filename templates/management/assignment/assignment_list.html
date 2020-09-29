@@ -1,7 +1,7 @@
 {% extends 'management/base.html' %}
 {% block title %} Device manager{% endblock %}
 {% block body %}
-{% if assignment_list %}
+{% if assignment_list_data %}
     <table class="table table-hover">
     <thead>
     <tr>
@@ -22,7 +22,7 @@
         {% endif %}
     </tr>
     </thead>
-    {% for el in assignment_list %}
+    {% for el in assignment_list_data %}
         <tbody>
             <tr class="table-info">
                 <th scope="row">{{ forloop.counter }}</th>
@@ -40,10 +40,10 @@
                 <td>
                     <div class="btn-group">
                             {% if perms.PersonnelManagement.change_projectemail %}
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'assignment-update' el.id %}">Edit</a>
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'management:assignment_update' el.id %}">Edit</a>
                             {% endif %}
                             {% if perms.PersonnelManagement.delete_invoicetype %}
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'assignment-delete' el.id %}">Delete</a>
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'management:assignment_delete' el.id %}">Delete</a>
                             {% endif %}
                     </div>
                 </td>
@@ -55,7 +55,7 @@
     <div class="container">
     <div class="bg-light my-4 p-4 text-center">
     <p>List is empty. Push the button to create distribution.</p>
-    <a class="btn btn-success" style="color: black" href="{% url 'assignment-create' %}">Сreate distribution</a>
+    <a class="btn btn-success" style="color: black" href="{% url 'management:assignment_create' %}">Сreate distribution</a>
     </div>
     </div>
 {% endif %}

@@ -20,7 +20,7 @@ class UserSerializerTestCase(TestCase):
             last_name='Test2',
             user_photo=SimpleUploadedFile(name='user.png', content=open('media/tmp/user2.png', 'rb').read()),
         )
-        url = reverse('user_list')
+        url = reverse('management:user_list')
         response = self.client.get(url)
         data = UserSerializer([user_1, user_2], many=True).data
         expected_data = [
@@ -196,7 +196,7 @@ class AssignmentSerializerTestCase(TestCase):
 
         )
 
-        url = reverse('assignment_list')
+        url = reverse('management:assignment_list')
         response = self.client.get(url)
         data = AssignmentSerializer(test_1).data
         expected_data = {

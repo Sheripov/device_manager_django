@@ -25,7 +25,7 @@ class UserTests(APITestCase):
         """
         user = User.objects.create_user('username', 'Pas$w0rd')
         self.client.force_authenticate(user)
-        url = reverse('user-list')
+        url = reverse('management:user_list')
         photo_file = generate_photo_file()
         data = {
             'first_name': 'Farruh',

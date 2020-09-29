@@ -162,14 +162,14 @@ class BuyerDeleteView(PermissionRequiredMixin, DeleteView):
 # List Views
 class AssignmentListView(ListView):
     model = Assignment
-    context_object_name = 'assignment_list'
+    context_object_name = 'assignment_list_data'
     queryset = Assignment.objects.order_by('assignment_date')
     template_name = 'management/assignment/assignment_list.html'
 
 
 class UserListView(ListView):
     model = User
-    context_object_name = 'user_list'
+    context_object_name = 'user_list_data'
     queryset = User.objects.order_by('employee_date')
     template_name = 'management/user/user_list.html'
 

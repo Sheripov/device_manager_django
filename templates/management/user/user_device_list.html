@@ -25,10 +25,10 @@
                         </div>
                         <div class="btn-group">
                             {% if perms.PersonnelManagement.change_projectemail %}
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'device-update' device.id %}">Edit</a>
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'management:device_update' device.id %}">Edit</a>
                             {% endif %}
                             {% if perms.PersonnelManagement.delete_invoicetype %}
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'device-delete' device.id %}">Delete</a>
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'management:device_delete' device.id %}">Delete</a>
                             {% endif %}
                         </div>
                         <div class="card-footer text-muted">

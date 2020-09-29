@@ -31,10 +31,10 @@
                         </div>
                         <div class="btn-group">
                             {% if perms.PersonnelManagement.change_projectemail %}
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'device-update' device.item_number %}">Edit</a>
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'management:device_update' device.item_number %}">Edit</a>
                             {% endif %}
                             {% if perms.PersonnelManagement.delete_invoicetype %}
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'device-delete' device.item_number %}">Delete</a>
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'management:device_delete' device.item_number %}">Delete</a>
                             {% endif %}
                         </div>
                         <div class="card-footer text-muted">
@@ -50,7 +50,7 @@
         <div class="container">
         <div class="bg-light my-4 p-4 text-center">
         <p>List is empty. Push the button to create a device.</p>
-        <a class="btn btn-success" style="color: black" href="{% url 'device-create' %}">Сreate device</a>
+        <a class="btn btn-success" style="color: black" href="{% url 'management:device_create' %}">Сreate device</a>
         </div>
         </div>
     {% endif %}

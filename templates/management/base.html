@@ -11,26 +11,26 @@
 
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="{% url 'assignment_list' %}">Home</a>
+    <a class="navbar-brand" href="{% url 'management:assignment_list' %}">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'user_list' %}">User list <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'management:user_list' %}">User list <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'device_list' %}">Device list</a>
+                <a class="nav-link" href="{% url 'management:device_list' %}">Device list</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'team_list' %}">Team list</a>
+                <a class="nav-link" href="{% url 'management:team_list' %}">Team list</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'buyer_list' %}">Buyer list</a>
+                <a class="nav-link" href="{% url 'management:buyer_list' %}">Buyer list</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'devicetype_list' %}">Device type list</a>
+                <a class="nav-link" href="{% url 'management:devicetype_list' %}">Device type list</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/api/">API</a>
@@ -38,17 +38,17 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{% url 'user-create' %}">Create user</a>
-                    <a class="dropdown-item" href="{% url 'device-create' %}">Create device</a>
-                    <a class="dropdown-item" href="{% url 'team-create' %}">Create team</a>
-                    <a class="dropdown-item" href="{% url 'buyer-create' %}">Create buyer</a>
-                    <a class="dropdown-item" href="{% url 'devicetype-create' %}">Create device type</a>
+                    <a class="dropdown-item" href="{% url 'management:user_create' %}">Create user</a>
+                    <a class="dropdown-item" href="{% url 'management:device_create' %}">Create device</a>
+                    <a class="dropdown-item" href="{% url 'management:team_create' %}">Create team</a>
+                    <a class="dropdown-item" href="{% url 'management:buyer_create' %}">Create buyer</a>
+                    <a class="dropdown-item" href="{% url 'management:devicetype_create' %}">Create device type</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'assignment-create' %}">Сreate distribution</a>
+                    <a class="dropdown-item" href="{% url 'management:assignment_create' %}">Сreate distribution</a>
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" action="{% url 'search-results' %}" method="get">
+        <form class="form-inline my-2 my-lg-0" action="{% url 'management:search_results' %}" method="get">
             <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search device">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>

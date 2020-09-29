@@ -17,10 +17,10 @@
                     <th scope="row">{{ team.team_name }}</th>
                     <td><div class="btn-group">
                             {% if perms.PersonnelManagement.change_projectemail %}
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'team-update' team.id %}">Edit</a>
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'management:team_update' team.id %}">Edit</a>
                             {% endif %}
                             {% if perms.PersonnelManagement.delete_invoicetype %}
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'team-delete' team.id %}">Delete</a>
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'management:team_delete' team.id %}">Delete</a>
                             {% endif %}
                         </div></td>
                 </tr>
@@ -33,7 +33,7 @@
     <div class="container">
     <div class="bg-light my-4 p-4 text-center">
     <p>List is empty. Push the button to create team.</p>
-    <a class="btn btn-success" style="color: black" href="{% url 'team-create' %}">Сreate team</a>
+    <a class="btn btn-success" style="color: black" href="{% url 'management:team_create' %}">Сreate team</a>
     </div>
     </div>
 {% endif %}

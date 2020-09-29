@@ -17,10 +17,10 @@
                     <th scope="row">{{ buyer.buyer_name }}</th>
                     <td><div class="btn-group">
                             {% if perms.PersonnelManagement.change_projectemail %}
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'buyer-update' buyer.id %}">Edit</a>
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'management:buyer_update' buyer.id %}">Edit</a>
                             {% endif %}
                             {% if perms.PersonnelManagement.delete_invoicetype %}
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'buyer-delete' buyer.id %}">Delete</a>
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'management:buyer_delete' buyer.id %}">Delete</a>
                             {% endif %}
                         </div></td>
                 </tr>
@@ -33,7 +33,7 @@
     <div class="container">
     <div class="bg-light my-4 p-4 text-center">
     <p>List is empty. Push the button to create a buyer.</p>
-    <a class="btn btn-success" style="color: black" href="{% url 'buyer-create' %}">Сreate buyer</a>
+    <a class="btn btn-success" style="color: black" href="{% url 'management:buyer_create' %}">Сreate buyer</a>
     </div>
     </div>
 {% endif %}

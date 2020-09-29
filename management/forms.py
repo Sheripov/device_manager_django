@@ -6,7 +6,7 @@ from management.models import Assignment, User, Device, Team
 class AssignmentForm(ModelForm):
     class Meta:
         model = Assignment
-        fields = ['user', 'device', 'comment']
+        fields = ['user', 'device', 'assignment_date', 'comment']
 
 
 class UserForm(ModelForm):
