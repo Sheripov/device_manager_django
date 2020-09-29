@@ -22,6 +22,14 @@
                     <li class="list-group-item"> <a href="{{ device_detail.configuration }}" class="card-link">Configuration link</a></li>
                 </div>
             </div>
+            <div class="btn-group">
+                {% if perms.PersonnelManagement.change_projectemail %}
+                <a type="button" class="btn btn-primary" href="{% url 'management:device_update' device_detail.item_number %}">Edit</a>
+                {% endif %}
+                {% if perms.PersonnelManagement.delete_invoicetype %}
+                <a type="button" class="btn btn-primary" href="{% url 'management:device_delete' device_detail.item_number %}">Delete</a>
+                {% endif %}
+            </div>
             <div class="card-footer text-muted">
                 {{ device_detail.purchase_date }}
             </div>

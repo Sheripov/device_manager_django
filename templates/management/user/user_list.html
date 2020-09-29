@@ -9,27 +9,21 @@
                 {% for user in user_list_data %}
                     <div style="margin: auto;" class="col-md-4">
                         <div class="card mb-4 shadow-sm">
-                            <a href="{{ user.get_user_devices_list  }}">
                                 <h3 class="card-header">{{ user.first_name }} {{ user.last_name }}</h3>
-                            <div class="card mb-3">
+
                                 {% if user.user_photo %}
                                 <img style="display: block; margin: auto; width: 100%;" src="{{user.user_photo.url}}" alt="Card image">
                                 {% else %}
                                 <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="37%" y="50%" fill="#eceeef" dy=".3em">NO PHOTO</text></svg>
                                 {% endif %}
-                            </div>
-                                <div class="btn-group">
-                                    {% if perms.PersonnelManagement.change_projectemail %}
-                                    <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'management:user_update' user.id %}">Edit</a>
-                                    {% endif %}
-                                    {% if perms.PersonnelManagement.delete_invoicetype %}
-                                    <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'management:user_delete' user.id %}">Delete</a>
-                                    {% endif %}
+
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <a type="button" class="btn btn-primary" href="{{ user.get_user_devices_list  }}">View device list</a>
+                                    <a type="button" class="btn btn-primary" href="{{ user.get_absolute_url  }}">Open user card</a>
                                 </div>
                             <div class="card-footer text-muted">
                                 {{ user.employee_date }}
                             </div>
-                                </a>
                         </div>
                     </div>
                 {% endfor %}
