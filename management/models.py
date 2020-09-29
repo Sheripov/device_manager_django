@@ -11,16 +11,11 @@ class User(models.Model):
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
-    @staticmethod
-    def get_absolute_url():
-        return reverse('management:user_list')
+    def get_absolute_url(self):
+        return reverse('management:user_detail', args=[self.id])
 
     def get_user_devices_list(self):
         return reverse('management:user_devices_list', args=[self.id])
-
-    def get_absolute_user_url(self):
-        return reverse('management:user_detail', args=[self.id])
-
 
 class Buyer(models.Model):
     buyer_name = models.CharField('Buyer Name', max_length=50, unique=True)
@@ -52,7 +47,7 @@ class DeviceType(models.Model):
 
     @staticmethod
     def get_absolute_url():
-        return reverse('management:device_list')
+        return reverse('management:devicetype_list')
 
 
 class Device(models.Model):

@@ -1,6 +1,7 @@
 {% extends 'management/base.html' %}
 {% block title %}User devices{% endblock %}
 {% block body %}
+{% if user_devices %}
     <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
@@ -40,5 +41,18 @@
         </div>
     </div>
     </div>
+    {% else %}
 
+        <div class="container">
+        <div class="bg-light my-4 p-4 text-center">
+            {% if request.user.is_authenticated %}
+            <p>List is empty. Push the button to create user.</p>
+            <a class="btn btn-success" style="color: black" href="{% url 'user-create' %}">Сreate user</a>
+            {% else %}
+            <p>List is empty.</p>
+            {% endif %}
+        </div>
+        </div>
+
+    {% endif %}
 {% endblock %}

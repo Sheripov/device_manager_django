@@ -32,8 +32,12 @@
 {% else %}
     <div class="container">
     <div class="bg-light my-4 p-4 text-center">
-    <p>List is empty. Push the button to create team.</p>
-    <a class="btn btn-success" style="color: black" href="{% url 'management:team_create' %}">Сreate team</a>
+        {% if request.user.is_authenticated %}
+        <p>List is empty. Push the button to create team.</p>
+        <a class="btn btn-success" style="color: black" href="{% url 'team-create' %}">Сreate team</a>
+        {% else %}
+        <p>List is empty.</p>
+        {% endif %}
     </div>
     </div>
 {% endif %}

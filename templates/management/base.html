@@ -35,6 +35,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/api/">API</a>
             </li>
+            {% if request.user.is_authenticated %}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
                 <div class="dropdown-menu">
@@ -47,6 +48,7 @@
                     <a class="dropdown-item" href="{% url 'management:assignment_create' %}">Сreate distribution</a>
                 </div>
             </li>
+            {% endif %}
         </ul>
         <form class="form-inline my-2 my-lg-0" action="{% url 'management:search_results' %}" method="get">
             <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search device">

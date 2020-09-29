@@ -1,8 +1,8 @@
 # device_manager
 # "device manager" Web-Application on Django 3.1.1
 ```sh
-# $ git clone https://github.com/Sheripov/library_store.git
-# $ cd library_store
+# $ git clone https://github.com/Sheripov/device_manager_django.git
+# $ cd device_manager
 ```
 ### Develop mode
 ```sh
