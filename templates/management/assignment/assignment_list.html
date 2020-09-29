@@ -40,10 +40,10 @@
                 <td>
                     <div class="btn-group-vertical" data-toggle="buttons">
                             {% if perms.PersonnelManagement.change_projectemail %}
-                            <a type="button" href="{% url 'management:assignment_update' el.id %}">Edit</a>
+                            <a type="button" class="btn" href="{% url 'management:assignment_update' el.id %}">Edit</a>
                             {% endif %}
                             {% if perms.PersonnelManagement.delete_invoicetype %}
-                            <a type="button" href="{% url 'management:assignment_delete' el.id %}">Delete</a>
+                            <a type="button" class="btn" href="{% url 'management:assignment_delete' el.id %}">Delete</a>
                             {% endif %}
                     </div>
                 </td>
